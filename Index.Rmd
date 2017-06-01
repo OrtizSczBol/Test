@@ -13,7 +13,7 @@ html_document:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-setwd("C:/Users/EMILIO JUSTINIANO/Desktop/Crónica de una Traición")
+setwd("C:/Users/EMILIO JUSTINIANO/Desktop/Ortizz/FD")
 #Carga de paquetes necesarios
 pkgs <- c("rio", "magrittr", "xlsx", "readxl", "stringi", "gdata",
           "gsubfn", "dplyr", "plyr", "leaflet", "plotly", "knitr","rgdal")
