@@ -1,0 +1,299 @@
+---
+title: 
+author: 
+date: 
+output:  
+html_document:
+        highlight: kate
+        theme: journal
+        self_contained: false
+        fig_caption: true
+---
+<meta charset="UTF-8">
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+setwd("C:/Users/EMILIO JUSTINIANO/Desktop/Crónica de una Traición")
+#Carga de paquetes necesarios
+pkgs <- c("rio", "magrittr", "xlsx", "readxl", "stringi", "gdata",
+          "gsubfn", "dplyr", "plyr", "leaflet", "plotly", "knitr","rgdal")
+lapply(pkgs, function(x) require(x, character.only = TRUE))
+rm(pkgs)
+```
+
+<!-- Header -->
+<center>
+###**EL CASO DEL FONDO INDÍGENA:**
+</center>
+<center>
+<h1>***CRÓNICA DE UNA TRAICIÓN***</h1>
+</center>
+<br>
+
+
+<center><h4>"Les invito a ustedes a que se sientan orgullosos de nuestros pueblos indígenas, que son la reserva moral de la humanidad".</h4></center>
+<center><h4>**-Evo Morales,2005**</center></h4> 
+<br>
+<center><IMG SRC="whipala.jpg" width="450" height="150"></center>
+<center>La imágen es de 2005, de su posesión en tiwanaku</center>
+<br>
+<center>
+#####**El MAS reivindicó lo indígena como parte central de su discurso electoral desde 2002 hasta la victoria que obtuvo en 2005.** Ya en función de gobierno, el MAS promovió la inclusión de una serie de derechos para los pueblos indígenas en la nueva Constitución Política del Estado y otras normas.
+
+#####A pesar de ello, diversos hechos, **como el caso del TIPNIS**, muestran que **lo indígena no fue más que un recurso discursivo** que no influenció realmente en el desarrollo planificado y razonado de políticas de Estado.
+
+#####Más aún, con frecuencia, **las organizaciones indígenas fueron instrumentalizadas mediante una estrategia política** que significó la **otorgación de beneficios económicos** a aquellas (mayormente sindicales y no indígenas) que, a pesar de malos manejos de los recursos, mantuvieron **fidelidad incondicional al gobierno**, mientras que aquellas que criticaron las decisiones gubernamentales se vieron fuertemente afectadas.
+</center>
+<br>
+<center><h3>**El Caso del Fondo Indígena: Crónica de una Traición **</h3></center>
+<br>
+
+<h5>Analiza con profundidad los hechos,los implicados y las cifras, que deja la utilización de los recursos del Fondo Indígena **desde 2005 hasta 2015.** Con base en datos oficiales y otros que son resultado de una exahustiva investigación.</h5>
+<br>
+<center><h4>**Muestra con claridad:**</h4></center>
+<br>
+<h5>
+- El uso de los recursos como favor político con miras electorales.
+
+- El castigo a organizaciones indígenas que tomaron distancia,
+
+- La discrecionalidad en el manejo de los mismos.
+
+- La violación sistemática de las normas.
+
+- Los implicados de este caso que la población boliviana merece conocer, analizar y opinar.
+</h5>
+<br>
+<center><h2>**El Contexto Económico y SocioPolítico**</h2></center>
+<br>
+<center><h4>Fig. 1: Ingresos y Egresos en el Fondo Indígena - Gestiones 2005 a 2015  </center></h4>
+<center>
+```{r, echo=FALSE, include= TRUE, fig.align='center'}
+f0<- rio::import("Transferencias por Gestiones.csv")
+#Convertir Gestiones a Factor, para la visualización
+f00<- c(2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015)
+f00<- as.factor(f00)
+f0<- f0[,2:4]
+f1<- data.frame(f00,f0)
+names(f1)<- c("Gestiones","Ingresos","Egresos", "Saldo")
+plot_ly(f1, x = ~Gestiones, y = ~Ingresos, type = 'bar', 
+        name = 'Ingresos en Bs.',
+        width =600, height = 300,
+        marker = list(color = 'rgba(11, 170, 157, 0.8 )',
+                      line = list(color = 'rgba(11, 170, 157, 0.8 )',
+                                  width = 3))) %>%
+  add_trace(y = ~Egresos, name = 'Egresos en Bs.',
+            marker = list(color = 'rgba(0, 108, 110, 0.8 )',
+                          line = list(color = 'rgba(0, 108, 110, 0.8 )',
+                                      width = 3))) %>%
+  layout(barmode = 'stack',
+         xaxis = list(title = ""),
+         yaxis = list(title ="")
+         )%>% hide_legend()
+
+```
+</center>
+<center><h5>**El Fondo Indígena es creado en 2005 a partir de la distribución de recursos del Impuesto Directo a los Hidrocarburos (IDH)**, sin embargo, **no es sino hasta 2010 que estos recursos comienzan a ser distribuidos para financiar actividades.** Varios decretos ponen en funcionamiento el mecanismo, con el fin de financiar proyectos de carácter productivo y social.Pero, </h5>
+<br>
+<center><h3>**¿Por qué recién después de 5 años se pone en funcionamiento el Fondo Indígena?**</h3></center>
+<br>
+<center><h4>**Los datos de la Figura 1. muestran que:**</h4></center>
+<br>
+<h5>
+- Durante el periodo 2005-2010, las actividades a nivel local particularmente, estaban financiadas con recursos del Programa Bolivia Cambia Evo Cumple con financiamiento venezolano.
+
+- El deterioro de la economía venezolana y la muerte del ex Presidente Hugo Chávez produjeron un descenso en las transferencias al país.
+
+- A la par de este descenso, a partir de 2010 se advierte un incremento sostenido de la transferencia de recursos del Fondo Indígena, como se advierte en la misma Figura 1.</h5>
+<br>
+<center><h5>**Si bien en el Programa Bolivia Cambia Evo Cumple financiaba proyectos con la mediación de autoridades locales, el Fondo Indígena acudía directamente a las organizaciones indígenas y campesinas.** <h/5></center>
+<br>
+<center><h1>**La Instrumentalización de lo Indígena**</h1></center>
+<br>  
+<center><h5>La utilización de lo indígena con fines electorales puede rastrearse por diferentes vías, sin embargo, la del Fondo Indígena puede ser una de las más reveladoras, pues **sobre la base de unos objetivos dignos y coherentes que pocos podrían criticar, se gesta una instrumentalización de los movimientos indígenas a gran escala.** En este estudio, partimos de la siguiente hipótesis:<h/5>
+
+- <h4>***El Fondo Indígena ha sido utilizado como parte de una estrategia político electoral del MAS para crear y sostener aliados, pero también para mostrar que aquellos que quieran restar su apoyo serán castigados.***</h4>
+
+<h5>Por medio de varios datos, se podrá entender el carácter de esta estrategia y de las transgresiones legales que existió.</h5></center>
+<br>
+<center><h4>Fig. 2: Mapa de Proyectos por Departamento</h4></center>
+
+<center>
+``````{r, echo=FALSE, include= TRUE, fig.width = 4, fig.height = 4, message = F,}
+# cargar el mapa
+mapaf <- readOGR(dsn = "Departamental.dbf",
+                layer = "Departamental", verbose = FALSE)
+
+#cargar los pop ups
+mapa_popup <- paste0("<strong>DEPARTAMENTO: </strong>", mapaf$NOM_DEP, "<br>", 
+                     "<strong>Proyectos: </strong>", mapaf$departam_3, "<br>",
+                     "<strong>Desembolsos Totales: </strong>", mapaf$departam_1,"<br>",
+                     "<strong>Desembolsos Parciales: </strong>", mapaf$departam_2,"<br>",
+                     "<strong>Bs Desembolsados: </strong>", mapaf$departam_5,"<br>",
+                     "<strong>Costo Total en Bs:</strong>", mapaf$departam_4,"<br>",
+                     "<strong>Saldo sin Ejecutar en Bs:</strong>", mapaf$departam_6)
+
+# Visualizar el mapa                    
+mapaf1 <- leaflet(mapaf) %>% 
+  addPolygons(color = "#999999", weight = 0.3, smoothFactor = 0.5,
+              opacity = 9.0, fillOpacity = 3, 
+              
+              popup = mapa_popup, 
+              fillColor = ~colorFactor(c("#c6ecd9","#006C6E","#0BAA9D"),   departam_7)(departam_7)) 
+
+mapaf1
+```
+<center><h7>Pulsar en los departamentos</h7></center>
+</center>
+<br>
+<center><h5>A nivel departamental, los desembolsos de **recursos se concentran significativamente en el departamento de La Paz, donde se entregó más de 350 millones de bolivianos**, seguido  a una distancia considerable por **Beni, con casi 70 millones de bolivianos** y **Cochabamba con una cifra cercana a los 52 millones.** En el resto de los casos, las cifras de desembolso son menores a los 50 millones de bolivianos. La disparidad entonces es muy marcada, por ejemplo **Chuquisaca recibe 18 veces menos recursos por proyectos que La Paz.**
+</h5></center> 
+
+<br>
+
+  <center><h2>**Las Trillizas incondicionales**</h2></center>
+<br>
+  <center><h4>Fig. 3: Desembolsos, Costos y Proyectos por Organizaciones Sociales</h4></center>
+
+<center> 
+```{r, echo=FALSE, include= TRUE, fig.width = 6, fig.height = 6, message = F,}
+#Organizaciones Sociales
+
+f3<-import("organización.csv")
+colors <- c('rgba(11, 170, 157, 0.8 )','rgba(11, 170, 157, 0.8 )','rgba(11, 170, 157, 0.8 )',
+            'rgb(211,94,96)', 'rgb(128,133,133)', 'rgb(144,103,167)', 
+            'rgb(171,104,87)', 'rgb(114,147,203)','rgba(0, 108, 110, 0.8 )')
+f3_1<- plot_ly() %>%
+  add_pie(data = f3, labels = f3$`Organización Social`,
+          values = f3$`Total desembolsado`, type = "pie",
+          name = "Desembolso", 
+          marker = list(colors = colors,
+                        line = list(color = '#FFFFFF', width = 1)),
+          domain = list(x = c(0, 0.4), y = c(0.4, 1))) %>%
+  add_pie(data = f3, labels = f3$`Organización Social`, 
+          values = f3$`Proyectos aprobados`,
+          marker = list(colors = colors,
+                        line = list(color = '#FFFFFF', width = 1)),
+          name = "Proyectos", domain = list(x = c(0.6, 1), y = c(0.4, 1))) %>%
+  add_pie(data = f3, labels = f3$`Organización Social`,
+          values = f3$`Costo del Proyecto según Convenio`,
+          marker = list(colors = colors,
+                        line = list(color = '#FFFFFF', width = 1)),
+          name = "Costos", domain = list(x = c(0.25, 0.75), y = c(0, 0.6))) %>%
+  layout(title = "", showlegend = F,
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
+f3_1
+```
+</center> 
+<br>
+<center><h5>En relación a las organizaciones beneficiarias, **destacan las CSUTCB y la CSCIB que juntas reciben más de 400 millones de bolivianos,** a diferencia de **CONAMAQ y CIDOB, que fueron dos organizaciones que tuvieron diferencias sustanciales con el gobierno, que recibieron juntas poco más de 150 millones de bolivianos.** La grandes brechas existentes, precisamente pueden explicarse a periodos y procesos de distanciamiento con el Gobierno de Evo Morales. La correlación entre la reducción de montos desembolsados y el distanciamiento se explicará con detalle en otra sección.
+</h5>
+</center>
+<br>
+<center><h2>**Juez y Parte: El Resultado de una mala gestión basada en el favor político**</h2></center>
+<br>
+<center><h4> Fig. 4: Estado de los Proyectos </h4></center>
+<center>
+```{r, echo=FALSE, include= TRUE, fig.width = 7, fig.height = 4, message = F,}
+f4<- import("estado de los proyectos.csv")
+names(f4)<- c("Clasificacion","Proyectos","Porcentaje","Importe Transferido Bs.")
+colors1 <- c('rgb(211,94,96)', 'rgb(128,133,133)', 'rgb(144,103,167)', 
+            'rgb(171,104,87)', 'rgb(114,147,203)','rgba(0, 108, 110, 0.8 )')
+
+f4_1<- plot_ly() %>%
+  add_pie(data = f4, labels = f4$Clasificacion,
+          values = f4$Proyectos, type = "pie",
+          name = "Proyectos", 
+          marker = list(colors = colors1,
+                        line = list(color = '#FFFFFF', width = 1)),
+          domain = list(x = c(0, 0.4), y = c(0.4, 1))) %>%
+  add_pie(data = f4, labels = f4$Clasificacion, 
+          values = f4$`Importe Transferido Bs.`,
+          marker = list(colors = colors1,
+                        line = list(color1 = '#FFFFFF', width = 1)),
+          name = "Desembolsos en Bs", domain = list(x = c(0.6, 1),
+                                                    y = c(0.4, 1))) %>%
+  layout(title = "", showlegend = F,
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+f4_1
+
+```
+</center>
+
+<center>
+<h5>Como puede observarse, hay un gran número de proyectos que de acuerdo al informe de la interventora, **NO EXISTEN**, están denunciados o tienen observaciones.
+Este dato muestra con claridad la mala gestión de los proyectos y las obvias deficiencias de un modelo que no tiene mecanismos de control.
+Del recuento de proyectos según su estado, **destaca una gran cantidad de proyectos denunciados por la Contraloría General del Estado ante la Fiscalía, cifra que alcanza más de 160.** Por otra parte, **la cantidad de proyectos inexistentes alcanza más de una veintena. **
+</h5></center>
+<center>
+
+</center>
+<br>
+<br>
+<center><h2>**Los Momentos Claves** </h2></center>
+<br>
+<center><h4> Fig. 5: Linea de Tiempo de Transferencias desde el Fondo Indígena </h4></center>
+<div class="infogram-embed" data-id="ssss-802874827606" data-type="interactive" data-title="SSSS"></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script"),r=o[0],d=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=d+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var a=e.createElement("script");a.async=1,a.id=s,a.src=i,r.parentNode.insertBefore(a,r)}}(document,"script","infogram-async","//e.infogr.am/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogr.am/ssss-802874827606" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">SSSS</a><br><a href="https://infogr.am/create/line-chart?utm_source=embed_bottom&utm_medium=seo&utm_campaign=line_chart" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Create line charts</a></div>
+<br>
+<center><h5>En el tiempo, la cantidad de recursos desembolsados fue incrementando. **Entre 2011 y 2012 los proyectos alcanzaban poco más de 1 millón de bolivianos, con algunas excepciones**. A partir de 2013 la cantidad de proyectos con montos que superan el millón de bolivianos crece sustancialmente, **alcanzando en 2015 cifras cercanas a los 9 millones.** </h5</center>
+
+<center>
+<br>
+<h5>**Los proyectos tenían programados hasta 4 desembolsos.** Como puede observarse, la gran mayoría llegó solamente al primero. Este dato es sintomático de una mala planificación y/o gestión de los proyectos. 
+También es preocupante notar que hay momentos en los que se incrementan dramáticamente los desembolsos y que parecieran coincidir con la de coyuntura política. Por ejemplo, **hay un pico en Diciembre de 2011, justo después del conflicto del TIPNIS y en plena coyuntura de elecciones judiciales, para las que el gobierno central hizo una intensa campaña.**
+</h5>
+
+</center
+<center>
+<br>
+<center><h2> **El Financiamiento Político ** </h2></center>
+<br>
+<center><h4> Fig. 5: Linea de Tiempo de Transferencias por Organizaciones Sociales </h4></center>
+
+<div class="infogram-embed" data-id="sd-34660637478888" data-type="interactive" data-title="SD"></div><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script"),r=o[0],d=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=d+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var a=e.createElement("script");a.async=1,a.id=s,a.src=i,r.parentNode.insertBefore(a,r)}}(document,"script","infogram-async","//e.infogr.am/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogr.am/sd-34660637478888" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">SD</a><br><a href="https://infogr.am/create/line-chart?utm_source=embed_bottom&utm_medium=seo&utm_campaign=line_chart" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Create line charts</a></div>
+<br>
+</center>
+<center>
+<h5>Observando los montos desembolsados a las 8 organizaciones beneficiarias, se hace evidente que hay algunas que de manera desproporcionada obtienen recursos sobre otras.
+Las organizaciones que mayores proyectos y recursos recibieron, coinciden con las alianzas políticas del gobierno central. 
+**Si por ejemplo se observa el caso de CONAMAQ, el patrón de desembolsos coincide con los momentos de acercamiento o distanciamiento con el gobierno. **
+</h5>
+</center>
+<br>
+<center><h2> **Los “beneficiarios” más importantes del FONDIOC**</h2></center>
+<br>
+<center><h4> Fig. 6: Titulares de Cuenta que recibieron más de 3 millones de Bs. </h4></center>
+
+<center>
+```{r, echo=FALSE}
+f5<-rio::import("Masde3millones.csv")
+f5_1<-plot_ly(x= f5$`Titular de Cta.`, y = f5$`T. Transferido`,
+        type = 'bar',
+        name ='Bs./Titular de Cta.',
+        marker = list(color = 'rgba(11, 170, 157, 0.8 )'),
+        width =700, height = 300)%>%
+  layout(title="",
+         font=t)%>%hide_legend()
+f5_1
+```
+<br>
+</center>
+<center>Aunque una gran mayoría de desembolsos se transfirieron de manera ilegal a cuentas bancarias personales, **destacan los casos de 11 personas que recibieron aproximadamente el 10% del dinero desembolsado de los 1100 proyectos**, incluyendo a **Rivero Méndez Hubert** que recibió la insólita cantidad de **11 millones en UNA SOLA TRANSFERENCIA.**</center>
+<br>
+<center><h2> **Comunidades Beneficiarias** </h2></center>
+<br>
+<center><h4> Fig. 7: Mapa de Ubicación de los Proyectos del Fondo Indígena </h4></center>
+
+<center><h1><iframe src="https://www.google.com/maps/d/embed?mid=1ptiK-gCScZ4Fu69yHkwB0NVyyXU" width="640" height="480"></iframe></h1></center>
+<br>
+<center><h5>En este mapa están todas las comunidades beneficiarias del Fondo Indígena en el periodo analizado. **Se incluyeron los datos del proyecto, los montos, los ejecutores, responsables y beneficiarios**. Es importante transparentar la información y que los ciudadanos de cualquier comunidad puedan conocer, verificar y exigir resultados de haber un proyecto allí. **El verdadero control social es la transparentación de la información.** La población podrá juzgar por sí misma si lo que ocurrió en sus comunidades fue, de verdad, un programa de apoyo que reivindique a los pueblos indígenas.</h5> </center>
+
+<br>
+<center><h2>**BUSCA TU COMUNIDAD**</h2></center>
+<br>
+<br>
+<br>
+<br>
